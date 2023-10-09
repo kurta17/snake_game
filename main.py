@@ -1,22 +1,7 @@
 from turtle import Screen
 import turtle as t
 import time
-
-#create snake
-segments = []
-positions = [(0,0), (20,0), (40,0)]
-for pos in positions:
-    snake = t.Turtle()
-    snake.shape("square")
-    snake.color("white")
-    snake.penup()
-    snake.goto(pos)
-    segments.append(snake)
-
-
-    
-
-
+from snake import Snake
 #screen 
 screen = Screen()
 screen.bgcolor("black")
@@ -26,19 +11,18 @@ screen.setup(width=600,height=600)
 screen.tracer(0)
 
 #move snake
-
-# def go_right():
-    # for i in segments:
-    #     i.setheading(0)
-    #     i.forward(20)
+snake = Snake()
+screen.listen()
+screen.onkey(snake.up, key="Up") 
+screen.onkey(snake.left, key="Left") 
+screen.onkey(snake.right, key="Right") 
+screen.onkey(snake.down, key="Down") 
 
 while True: 
-    time.sleep(1)
-    for i in segments:
-        i.setheading(0)
-        i.forward(20)
-        snake.penup()
+    time.sleep(0.25)
+    snake.move()
     screen.update()
+
 
 
 screen.exitonclick()
