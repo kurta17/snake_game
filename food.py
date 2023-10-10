@@ -10,7 +10,12 @@ class Food(t.Turtle):
         self.food_pos()
 
     def food_pos(self):
+        self.change_color()
         self.goto(random.randint(-290,290),random.randint(-290,290))
+
+    def change_color(self):
+        self.color(random.randint(1,220) / 260,random.randint(1,220) / 260,random.randint(1,220) / 260)
+
 
 
 
