@@ -13,11 +13,13 @@ class Snake:
         for pos in positions:
             snake = t.Turtle()
             snake.shape("square")
-            snake.color("white")
+            snake.color("yellow")
             snake.penup()
             snake.goto(pos)
             self.segments.append(snake)
         self.head = self.segments[-1]
+        self.head.color("red")
+        
 
     def move(self):
         for i in range(0 , len(self.segments) - 1):
@@ -26,6 +28,23 @@ class Snake:
             next_pos = next_one.pos()
             current.goto(next_pos)
         self.head.forward(20)
+    
+    
+    def extend_snake(self):
+        tail = t.Turtle()
+        tail.speed(0)
+        tail.shape("square")
+        tail.color("white")
+        tail.penup()
+
+        last_tail = self.segments[0]
+        x = last_tail.xcor()
+        y = last_tail.ycor()
+        tail.goto(x, y)
+        self.segments.insert(0,tail) 
+        
+
+
     
     def up(self):
         if self.head.heading() != down:
