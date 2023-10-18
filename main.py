@@ -31,7 +31,7 @@ score_board = ScoreBoard()
 def check_body():
     head_pos = snake.head.position()
     for i in snake.segments[::-1]:
-        if head_pos == i.position:
+        if head_pos  == i.position:
             score_board.game_over()
             break
 
@@ -39,7 +39,7 @@ while True:
     time.sleep(0.1)
     check_body()
     snake.move()
-    if snake.head.distance(food)< 20:
+    if snake.head.distance(food) < 20:
         snake.extend_snake()
         score_board.increase_score()
         food.food_pos()    
@@ -47,10 +47,17 @@ while True:
     
     
     score_board.print_score()
+    score_board.print_record()
 
-    if snake.head.xcor()<-280 or snake.head.ycor() <-280 or snake.head.xcor() >280 or snake.head.ycor() > 280:
+    if snake.head.xcor()<-290 or snake.head.ycor() <-290 or snake.head.xcor() >290 or snake.head.ycor() > 290:
+        
         score_board.game_over()
-        break
+        score_board.print_score()
+        score_board.print_record()
+        time.sleep(1)
+        snake.go_back()
+        
+        screen.update()
     
     screen.update()
     

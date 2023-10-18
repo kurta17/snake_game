@@ -20,6 +20,7 @@ class Snake:
         self.head = self.segments[-1]
         self.head.color("red")
         
+        
 
     def move(self):
         for i in range(0 , len(self.segments) - 1):
@@ -29,7 +30,10 @@ class Snake:
             current.goto(next_pos)
         self.head.forward(20)
     
-    
+    def go_back(self):
+        for segment in self.segments:
+            segment.goto(0, 0)
+
     def extend_snake(self):
         tail = t.Turtle()
         tail.speed(0)
@@ -41,7 +45,8 @@ class Snake:
         x = last_tail.xcor()
         y = last_tail.ycor()
         tail.goto(x, y)
-        self.segments.insert(0,tail) 
+        self.segments.insert(0, tail)
+
         
 
 
